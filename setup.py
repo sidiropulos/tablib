@@ -7,7 +7,6 @@ setup(
     use_scm_version={
         'write_to': 'src/tablib/_version.py',
     },
-    setup_requires=['setuptools_scm'],
     description='Format agnostic tabular data library (XLS, JSON, YAML, CSV)',
     long_description=(
         open('README.md').read() + '\n\n' + open('HISTORY.md').read()
