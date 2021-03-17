@@ -6,7 +6,7 @@ Introduction
 This part of the documentation covers all the interfaces of Tablib.
 Tablib is a format-agnostic tabular dataset library, written in Python.
 It allows you to Pythonically import, export, and manipulate tabular data sets.
-Advanced features include segregation, dynamic columns, tags/filtering, and
+Advanced features include segregation, dynamic columns, tags / filtering, and
 seamless format import/export.
 
 
@@ -23,12 +23,30 @@ Tablib was developed with a few :pep:`20` idioms in mind.
 
 All contributions to Tablib should keep these important rules in mind.
 
+.. mit:
+
+MIT License
+-----------
+
+A large number of open source projects you find today are `GPL Licensed`_.
+While the GPL has its time and place, it should most certainly not be your
+go-to license for your next open source project.
+
+A project that is released as GPL cannot be used in any commercial product
+without the product itself also being offered as open source. The MIT, BSD, and
+ISC licenses are great alternatives to the GPL that allow your open-source
+software to be used in proprietary, closed-source software.
+
+Tablib is released under terms of `The MIT License`_.
+
+.. _`GPL Licensed`: https://opensource.org/licenses/gpl-license.php
+.. _`The MIT License`: https://opensource.org/licenses/mit-license.php
+
+
 .. _license:
 
 Tablib License
 --------------
-
-Tablib is released under terms of `The MIT License`_.
 
 Copyright 2017 Kenneth Reitz
 
@@ -50,14 +68,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-.. _`The MIT License`: https://opensource.org/licenses/mit-license.php
 
 .. _pythonsupport:
 
 Pythons Supported
 -----------------
 
-Python 3.6+ is officially supported.
+At this time, the following Python versions are officially supported:
 
-Now, go :ref:`install Tablib <install>`.
+* CPython 2.7
+* CPython 3.5
+* CPython 3.6
+* CPython 3.7
 
+Now, go :ref:`Install Tablib <install>`.

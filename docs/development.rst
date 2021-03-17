@@ -90,36 +90,32 @@ Tablib features a micro-framework for adding format support.
 The easiest way to understand it is to use it.
 So, let's define our own format, named *xxx*.
 
-From version 1.0, Tablib formats are class-based and can be dynamically
-registered.
+1. Write a new format interface.
 
-1. Write your custom format class::
+    :class:`tablib.core` follows a simple pattern for automatically utilizing your format throughout Tablib.
+    Function names are crucial.
 
-    class MyXXXFormatClass:
+    Example **tablib/formats/_xxx.py**: ::
+
         title = 'xxx'
 
-        @classmethod
-        def export_set(cls, dset):
+        def export_set(dset):
             ....
             # returns string representation of given dataset
 
-        @classmethod
-        def export_book(cls, dbook):
+        def export_book(dbook):
             ....
             # returns string representation of given databook
 
-        @classmethod
-        def import_set(cls, dset, in_stream):
+        def import_set(dset, in_stream):
             ...
             # populates given Dataset with given datastream
 
-        @classmethod
-        def import_book(cls, dbook, in_stream):
+        def import_book(dbook, in_stream):
             ...
             # returns Databook instance
 
-        @classmethod
-        def detect(cls, stream):
+        def detect(stream):
             ...
             # returns True if given stream is parsable as xxx
 
@@ -128,18 +124,15 @@ registered.
        If the format excludes support for an import/export mechanism (*e.g.* 
        :class:`csv <tablib.Dataset.csv>` excludes 
        :class:`Databook <tablib.Databook>` support),
-       simply don't define the respective class methods.
+       simply don't define the respective functions.
        Appropriate errors will be raised.
 
-2. Register your class::
+2. Add your new format module to the :class:`tablib.formats.available` tuple.
 
-    from tablib.formats import registry
+3. Add a mock property to the :class:`Dataset <tablib.Dataset>` class with verbose `reStructured Text`_ docstring. 
+   This alleviates IDE confusion, and allows for pretty auto-generated Sphinx_ documentation.
 
-    registry.register('xxx', MyXXXFormatClass())
-
-3. From then on, you should be able to use your new custom format as if it were
-a built-in Tablib format, e.g. using ``dataset.export('xxx')`` will use the 
-``MyXXXFormatClass.export_set`` method.
+4. Write respective :ref:`tests <testing>`.
 
 .. _testing:
 
@@ -163,16 +156,16 @@ the easiest way to test your changes for potential issues is to simply run the t
 Continuous Integration
 ----------------------
 
-Every pull request is automatically tested and inspected upon receipt with `GitHub Actions`_.
+Every pull request is automatically tested and inspected upon receipt with `Travis CI`_.
 If you broke the build, you will receive an email accordingly.
 
 Anyone may view the build status and history at any time.
 
-    https://github.com/jazzband/tablib/actions
+    https://travis-ci.org/jazzband/tablib
 
 Additional reports will also be included here in the future, including :pep:`8` checks and stress reports for extremely large datasets.
 
-.. _`GitHub Actions`: https://github.com/jazzband/tablib/actions
+.. _`Travis CI`: https://travis-ci.org/
 
 
 .. _docs:
